@@ -3,7 +3,7 @@ package reports;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.AfterTest;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
 import com.relevantcodes.extentreports.ExtentReports;
@@ -12,12 +12,13 @@ import com.relevantcodes.extentreports.LogStatus;
 
 public class Extent_Reports 
 {
+	String strPath= System.getProperty("user.dir")+"/test-output/GoogleExtentReport.html";
 	public WebDriver driver;
 	
 	@Test
 	public void extent()
 	{
-		ExtentReports er=new ExtentReports("E:\\Neon_Projects\\ExtentReport.html");
+		ExtentReports er=new ExtentReports(this.strPath);
 		ExtentTest et=er.startTest("Extent_Reports");
 		
 		
@@ -43,7 +44,7 @@ public class Extent_Reports
 		
 	}
 	
-	@AfterTest
+	@AfterClass
 	public void tearDown()
 	{
 		driver.close();
